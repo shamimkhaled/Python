@@ -1,0 +1,46 @@
+{% extends 'food/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Site</title>
+   
+</head>
+<body>
+
+    <!--Django Template Language-->
+    {% block body %}
+
+    {% for item in item_list %}
+        
+        <!-- Old code <ul>
+            <li> 
+                 <a href="/food/{{item.id}}">{{item.id}} -- {{item.item_name}}</a> 
+                <a href="{% url 'food:details' item.id %}">{{item.id}} -- {{item.item_name}}</a>
+            </li>
+        </ul> {% static 'img/placeholder-image.jpg' %} -->
+        <div class="row my-2">
+            <div class="col-md-3 offset-md-2">
+                <img src=" {{item.item_image}} " height="165px" width="155px" class="card">
+            </div>
+            <div class="col-md-4">
+                <h4>{{item.item_name}}</h4>
+                <p>{{item.item_desc}}</p>
+                <h6>${{item.item_price}}</h6>
+                <h6>${{item.user_name}}</h6>
+            </div>
+            <div class="col-md-2">
+                <a class="btn btn-success mx-1" href="{% url 'food:update_item' item.id %}" role="button">Edit</a>
+                <a class="btn btn-success" href="{% url 'food:details' item.id %}" role="button">View</a>
+            </div>
+        </div>
+        
+    {% endfor %}
+
+    {% endblock %}
+
+</body>
+</html>

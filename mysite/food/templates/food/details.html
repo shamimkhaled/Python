@@ -1,0 +1,30 @@
+{% extends 'food/base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Site</title>
+</head>
+<body>
+    {% block body %}
+
+    <div class="container my-2 row d-flex justify-content-center" >
+        <div class="card mb-3 border-0" style="max-width: 500px;">
+            <img src="{{item.item_image}} " height="310px" class="card-img-top" alt="...">
+            <div class="card-body">
+              <!-- <h4 class="card-title">{{item.item_name}}</h4> -->
+              <h4 class="card-title">{{object.item_name}}</h4>
+              <h6 class="card-text">{{object.item_desc}}</h6>
+              <h5 class="card-text">${{object.item_price}}</h5>
+              <a class="btn btn-danger" href="{% url 'food:delete_item' item.id %}" role="button">Delete</a>
+
+            </div>
+          </div>
+    </div>
+
+    {% endblock %}
+</body>
+</html>
